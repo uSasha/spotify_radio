@@ -46,6 +46,8 @@ def test_vectorizer_recommend(vectorizer, seed, likes, dislikes, n):
     if dislikes:
         assert recommended != vectorizer.recommend(seed, likes, [], n)
 
+    assert recommended == vectorizer.recommend(seed, likes, dislikes, n)
+
 
 @pytest.mark.parametrize('items', [
     [],

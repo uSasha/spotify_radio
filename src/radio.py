@@ -1,4 +1,5 @@
 import random
+from typing import List, Dict, Any, Union
 
 from src import config
 from src.spotify_client import SpotifyClient
@@ -6,14 +7,30 @@ from vectorizer import Vectorizer
 
 
 class Radio:
-    def __init__(self):
-        self.spoty = SpotifyClient()
+    """
+    Radio which can find available stations and provide next tracks according to listening history.
+    """
+    def __init__(self) -> None:
+        self.spoty = SpotifyClient(config.SPOTIFY_SETTINGS)
         self.vectorizer = Vectorizer()
 
-    def available_stations(self, user_id):
+    def available_stations(self, user_id: str) -> List[Dict[str, str]]:
+        """
+        Get user radio stations.
+        Stations are generated from Spotify playlists with prefix 'radio: '. Playlists should be public.
+        :param user_id:
+        :return:
+        """
         return self.spoty.get_user_playlists(user_id)
 
-    def next(self, radio_id, listening_history=None, n=10):
+    def next(self, radio_id: str, listening_history: List[Dict[str, Union[str, int]]] = None, n: int = 10) -> List[str]:
+        """
+        Find N items within radio station style and with respect to provided listening history.
+        :param radio_id: ID if Spotify playlist which describes station style
+        :param listening_history: listening stats for previous tracks
+        :param n: number of items to return
+        :return: Spotify track IDs
+        """
         seed = self.spoty.get_playlist_artist_names(radio_id)
 
         likes = []
