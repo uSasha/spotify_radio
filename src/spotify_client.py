@@ -68,4 +68,7 @@ class SpotifyClient:
         :param track_id: Spotify track ID
         :return: artist name
         """
-        return self.sp.track(track_id)['artists'][0]['name']
+        try:
+            return self.sp.track(track_id)['artists'][0]['name']
+        except spotipy.exceptions.SpotifyException:
+            return None
