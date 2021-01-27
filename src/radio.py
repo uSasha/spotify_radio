@@ -38,6 +38,8 @@ class Radio:
         for track in listening_history or []:
             track = dict(track)  # TODO: remove this
             artist = self.spoty.track_to_artist_name(track['track_id'])
+            if artist is None:
+                continue
             if track['play_seconds'] / track['length_seconds'] > config.DISLIKE_THRESHOLD:
                 likes.append(artist)
             else:
