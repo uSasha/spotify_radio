@@ -1,11 +1,12 @@
 import pytest
 
+import config
 from spotify_client import SpotifyClient
 
 
 @pytest.fixture
 def client():
-    return SpotifyClient()
+    return SpotifyClient(config.SPOTIFY_SETTINGS)
 
 
 @pytest.mark.parametrize('user_id', [
