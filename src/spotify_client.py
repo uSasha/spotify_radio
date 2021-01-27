@@ -13,11 +13,14 @@ class SpotifyClient:
         ))
 
     def get_user_playlists(self, user_id):
-        return [
-            {'name': playlist['name'].replace('radio: ', ''), 'id': playlist['id']}
-            for playlist in self.sp.user_playlists(user_id)['items']
-            if 'radio: ' in playlist['name']
-        ]
+        try:
+            return [
+                {'name': playlist['name'].replace('radio: ', ''), 'id': playlist['id']}
+                for playlist in self.sp.user_playlists(user_id)['items']
+                if 'radio: ' in playlist['name']
+            ]
+        except spotipy.exceptions.SpotifyException:
+            return []
 
     def get_playlist_artist_names(self, playlist):
         artists = []
