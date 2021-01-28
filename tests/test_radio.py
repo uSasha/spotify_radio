@@ -15,8 +15,8 @@ def test_radio_init(radio):
 
 
 @pytest.mark.parametrize('user_id', [
-                         'wotetsaz6dvmgp02mv8fcwfvo',
-                         'no_such_user',
+    'wotetsaz6dvmgp02mv8fcwfvo',
+    'no_such_user',
 ])
 def test_radio_available_stations(radio, user_id):
     stations = radio.available_stations(user_id)

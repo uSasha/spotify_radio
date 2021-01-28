@@ -16,16 +16,16 @@ def test_healthcheck():
 @pytest.mark.parametrize('listening_history', [
     {'tracks': []},
     {"tracks": [
-            {
-                "track_id": "1dvKuEV0o8rPfi15oJIPDU",
-                "play_seconds": 100,
-                "length_seconds": 120
-            },
-            {
-                "track_id": "7CH00lP1L9jRAD7iQkbrID",
-                "play_seconds": 10,
-                "length_seconds": 120
-            }
+        {
+            "track_id": "1dvKuEV0o8rPfi15oJIPDU",
+            "play_seconds": 100,
+            "length_seconds": 120
+        },
+        {
+            "track_id": "7CH00lP1L9jRAD7iQkbrID",
+            "play_seconds": 10,
+            "length_seconds": 120
+        }
     ]},
     {"tracks": [
         {
