@@ -1,9 +1,11 @@
 import os
 from typing import List
 
+import sentry_sdk
 import uvicorn
 from fastapi import FastAPI, APIRouter
 from pydantic import BaseModel
+from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
 
 from radio import Radio
 from src import config
@@ -67,6 +69,8 @@ def available_radio_stations(user_id: str):
 
 
 app.include_router(api_router)
+sentry_sdk.init(config.SENTRY_DSN)
+app = SentryAsgiMiddleware(app)
 
 if __name__ == '__main__':
     uvicorn.run(

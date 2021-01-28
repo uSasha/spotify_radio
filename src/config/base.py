@@ -17,4 +17,5 @@ SPOTIFY_SETTINGS = {
     'scope': 'user-library-read',
 }
 
+SENTRY_DSN = os.environ.get('SENTRY_DSN', '')
 CACHE_SIZE = 100000
