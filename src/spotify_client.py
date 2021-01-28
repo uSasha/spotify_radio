@@ -1,6 +1,9 @@
+from functools import lru_cache
 from typing import Dict, List, Set, Tuple
 
 import spotipy
+
+import config
 
 
 class SpotifyClient:
@@ -29,6 +32,7 @@ class SpotifyClient:
         except spotipy.exceptions.SpotifyException:
             return []
 
+    @lru_cache(maxsize=config.CACHE_SIZE)
     def get_playlist_artist_names(self, playlist: str) -> Set[str]:
         """
         Get artist names from selected playlist.
@@ -42,6 +46,7 @@ class SpotifyClient:
                 artists.append(artist['name'])
         return set(artists)
 
+    @lru_cache(maxsize=config.CACHE_SIZE)
     def name_to_spotify_id(self, name: str) -> Tuple[str]:
         """
         Convert artist name to Spotify ID,
@@ -52,6 +57,7 @@ class SpotifyClient:
         artist = self.sp.search(name, type='artist')['artists']['items'][0]
         return artist['id'], artist['name']
 
+    @lru_cache(maxsize=config.CACHE_SIZE)
     def artist_to_tracks(self, artist: str) -> List[str]:
         """
         Get top tracks for requested artist.
@@ -62,6 +68,7 @@ class SpotifyClient:
                 for track in self.sp.artist_top_tracks(artist)['tracks']
                 if track['is_playable']]
 
+    @lru_cache(maxsize=config.CACHE_SIZE)
     def track_to_artist_name(self, track_id: str) -> str:
         """
         Convert track ID to artist name
