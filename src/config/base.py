@@ -16,3 +16,5 @@ SPOTIFY_SETTINGS = {
     'redirect_uri': os.environ.get('SPOTIFY_REDIRECT_URI'),
     'scope': 'user-library-read',
 }
+
+SENTRY_DSN = os.environ.get('SENTRY_DSN', '')
