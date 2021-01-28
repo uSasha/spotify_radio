@@ -10,7 +10,10 @@ class RadioClient:
         self.radio_host = radio_host.replace('http://', '')
         self.listening_history = []
         self.current_track = None
-        self.miniplayer_template = '<iframe src="https://open.spotify.com/embed/track/{track_id}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
+        self.miniplayer_template = (
+            '<iframe src="https://open.spotify.com/embed/track/{track_id}" width="300" height="380" '
+            'frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
+        )
 
         self.out = widgets.Output()
 

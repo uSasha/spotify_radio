@@ -1,5 +1,5 @@
 import random
-from typing import List, Dict, Any, Union
+from typing import List, Dict, Union
 
 from src import config
 from src.spotify_client import SpotifyClient

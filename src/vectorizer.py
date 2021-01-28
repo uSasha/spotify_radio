@@ -47,9 +47,9 @@ class Vectorizer:
         dislikes_vec = self._mean_items_vector(dislikes)
 
         query_vec = (
-                seed_vec * config.SEED_WEIGHT
-                + likes_vec * config.LIKES_WEIGHT
-                - dislikes_vec * config.DISLIKES_WEIGHT
+            seed_vec * config.SEED_WEIGHT
+            + likes_vec * config.LIKES_WEIGHT
+            - dislikes_vec * config.DISLIKES_WEIGHT
         )
 
         try:
