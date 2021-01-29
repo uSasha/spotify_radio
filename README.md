@@ -1,3 +1,4 @@
+![tests](https://github.com/uSasha/spotify_radio/workflows/tests/badge.svg)
 # Spotify Radio
 Multiple personalized radio stations on Spotify
 
@@ -29,7 +30,8 @@ The main parts of the service are:
 ## Model details
 - model recommends artists instead of tracks and tracks are sampled by heuristic due to dataset sparsity 
   and a long tail problem distinctive to the music industry
-- model trained on the dataset with a user made playlists scrapped from social network
+- model trained on the [dataset](https://www.kaggle.com/usasha/million-music-playlists) with a user made playlists 
+  scrapped from social network
 - dataset was cleaned up massively because artist names are entered by users
 - you can find ANNOY index with item vectors and pickle with ID to name mappings in ./data
 
