@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build_image:
+  run_tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,11 +16,6 @@ jobs:
       - name: build base image
         run: docker build -t spotify_radio .
 
-  run_tests:
-    runs-on: self-hosted
-    needs: build_image
-
-    steps:
       - name: pytest
         run: docker run -w /app/tests spotify_radio 'python -m pytest'
 
