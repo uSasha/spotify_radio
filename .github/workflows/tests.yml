@@ -17,7 +17,7 @@ jobs:
         run: docker build -t spotify_radio .
 
       - name: pytest
-        run: docker run -w /app/tests spotify_radio 'python -m pytest'
+        run: docker run -w /app/tests spotify_radio python -m pytest
 
       - name: flake
-        run: docker run spotify_radio 'python -m flake8'
+        run: docker run spotify_radio python -m flake8
