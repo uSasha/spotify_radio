@@ -46,3 +46,5 @@ The main parts of the service are:
 ```
 - run service `docker run -p 8080:8080 spotify_radio`
 - open ./notebooks/demo.ipynb in jupyter, here you will find a demo based on rudimentary client
+- to make new radio station, create playlist prefixed with 'radio: ' on Spotify; playlist artists will 
+  define radio station style
