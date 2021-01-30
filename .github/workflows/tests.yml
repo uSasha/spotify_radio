@@ -14,7 +14,11 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: build base image
-        run: docker build -t spotify_radio .
+        run: docker build
+          --build-arg spotify_client_id=${{ secrets.SPOTIFY_CLIENT_ID }}
+          --build-arg spotify_client_secret=${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          --build-arg spotify_redirect_uri=${{ secrets.SPOTIFY_REDIRECT_URI }}
+          -t spotify_radio .
 
       - name: pytest
         run: docker run -w /app/tests spotify_radio python -m pytest

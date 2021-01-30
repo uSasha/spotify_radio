@@ -3,7 +3,7 @@ import os
 import sys
 
 environment = os.environ.get('environment', 'not_specified')
-modules = ['base', environment]
+modules = ['base', environment, 'local']
 
 if 'pytest' in sys.argv[0]:
     modules.append('test')
