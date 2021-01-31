@@ -2,27 +2,26 @@ name: tests
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
-  build_image:
+  run_tests:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
       - name: build base image
-        run: docker build -t spotify_radio .
+        run: docker build
+          --build-arg spotify_client_id=${{ secrets.SPOTIFY_CLIENT_ID }}
+          --build-arg spotify_client_secret=${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          --build-arg spotify_redirect_uri=${{ secrets.SPOTIFY_REDIRECT_URI }}
+          -t spotify_radio .
 
-  run_tests:
-    runs-on: self-hosted
-    needs: build_image
-
-    steps:
       - name: pytest
-        run: docker run -w /app/tests spotify_radio 'python -m pytest'
+        run: docker run -w /app/tests spotify_radio python -m pytest
 
       - name: flake
-        run: docker run spotify_radio 'python -m flake8'
+        run: docker run spotify_radio python -m flake8
