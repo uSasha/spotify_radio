@@ -1,4 +1,3 @@
-![tests](https://github.com/uSasha/spotify_radio/workflows/tests/badge.svg)
 # Spotify Radio
 Multiple personalized radio stations on Spotify
 
