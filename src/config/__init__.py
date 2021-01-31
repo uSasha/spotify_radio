@@ -2,8 +2,8 @@ import importlib
 import os
 import sys
 
-environment = os.environ.get('environment', 'not_specified')
-modules = ['base', environment, 'local']
+environment = os.environ.get('environment', 'local')
+modules = ['base', environment]
 
 if 'pytest' in sys.argv[0]:
     modules.append('test')
